@@ -1,20 +1,20 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
-const { title } = require("process");
 
 
-// TODO: Create a function to write README file
+// Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateMarkdown(data), (err)=>
     err ? console.error(err) : console.log('Sucess! Go checkout your new ReadMe!'))
-    // (generateMarkdown(data))
 }
-//use FS module to write data to readme file filename
 
 
-// TODO: Create a function to initialize app
+// Create a function to initialize app
 function init() {
+
+// Inquirer questions for node user
+
     inquirer
 .prompt([
 {
@@ -64,18 +64,13 @@ message: "Please enter your email address:",
 name: "Contact"
 },
 ])
+
+// Take the response from node and create a new md file with the name "NEWREADME" and fill the other parameter with the response data
+
 .then((response) => {
-    console.log("response", response)
     writeToFile("NEWREADME.md", response)
 })
 }
 
 // Function call to initialize app
 init();
-
-
-
-
-//use inquirer to display questions to user
-//call generatemarkdown function on the data collect
-//take what is returned to us, then pass it to the writeToFile function

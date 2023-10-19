@@ -1,4 +1,4 @@
-//TODO: create a function to render the correlating badge for the selected license
+// Create a function to render the correlating badge for the selected license
 function renderLicenseBadge(license) {
   if(license == "MIT License"){
     return `![Static Badge](https://img.shields.io/badge/License-MIT-blue)`
@@ -17,7 +17,7 @@ function renderLicenseBadge(license) {
   }
 }
 
-//TODO: create a function to create license template literal and link
+// Create a function to create license template literal and link
 function renderLicenseLink(license) {
   var licenseLink;
   if(license == "MIT License"){
@@ -43,7 +43,7 @@ function renderLicenseLink(license) {
 
 }
 
-// TODO: Create a function to generate markdown for README
+// Create a function to generate markdown for README
 function generateMarkdown(data) {
   renderLicenseLink(data.license);
   renderLicenseBadge(data.license)
