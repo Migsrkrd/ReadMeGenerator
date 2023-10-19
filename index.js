@@ -6,7 +6,7 @@ const { title } = require("process");
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.appendFile(fileName, generateMarkdown(data), (err)=>
+    fs.writeFile(fileName, generateMarkdown(data), (err)=>
     err ? console.error(err) : console.log('Sucess! Go checkout your new ReadMe!'))
     // (generateMarkdown(data))
 }

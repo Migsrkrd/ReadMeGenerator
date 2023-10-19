@@ -1,39 +1,55 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-const fs = require("fs")
-function renderLicenseBadge(license) {}
-//have a couple of license options
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-  license = data.License
-  var licenseLink;
-  if(license = "MIT License"){
-    licenseLink = "https://mit-license.org/"
+//TODO: create a function to render the correlating badge for the selected license
+function renderLicenseBadge(license) {
+  if(license == "MIT License"){
+    return `![Static Badge](https://img.shields.io/badge/License-MIT-blue)`
   }
-  else if(license = "Apache License 2.0"){
-    licenseLink = "https://www.apache.org/licenses/LICENSE-2.0"
+  if(license == "Apache License 2.0"){
+    return `![Static Badge](https://img.shields.io/badge/License-Apache2.0-blue)`
   }
-  else if(license ="BSD 3-Clause 'New' or 'Revised' License"){
-    licenseLink = "https://choosealicense.com/licenses/bsd-3-clause/"
+  if(license =="BSD 3-Clause 'New' or 'Revised' License"){
+    return `![Static Badge](https://img.shields.io/badge/License-BSD3-blue)`
+  }
+  if(license =="Boost Software License 1.0"){
+    return `![Static Badge](https://img.shields.io/badge/License-Boost%20Software%201.0-blue)`
+  }
+  else {
+    return "";
   }
 }
-//return the link to the license
-//could use a switch or if statements
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-//create conditional statement checking if license exists
-//check readme template to see what is needed here
-//call renderLicenseBadge and renderLicenseLink 
-//return badge, link, and extra sting content together as a template literal
+//TODO: create a function to create license template literal and link
+function renderLicenseLink(license) {
+  var licenseLink;
+  if(license == "MIT License"){
+    licenseLink = `This projected uses ${license}. For more information visit [https://mit-license.org/](https://mit-license.org/)`
+    return licenseLink;
+  }
+  if(license == "Apache License 2.0"){
+    licenseLink = `This projected uses ${license}. For more information visit [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)`
+    return licenseLink;
+  }
+  if(license =="BSD 3-Clause 'New' or 'Revised' License"){
+    licenseLink = `This projected uses ${license}. For more information visit [https://choosealicense.com/licenses/bsd-3-clause/](https://choosealicense.com/licenses/bsd-3-clause/)`
+    return licenseLink;
+  }
+  if(license =="Boost Software License 1.0"){
+    licenseLink = `This projected uses ${license}. For more information visit [https://www.boost.org/LICENSE_1_0.txt](https://www.boost.org/LICENSE_1_0.txt)`
+    return licenseLink;
+  }
+  else {
+    return "There is no license for this project.";
+  }
+ 
 
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  renderLicenseLink(data.license);
+  renderLicenseBadge(data.license)
+  return `
+  ${renderLicenseBadge(data.license)}
+  # ${data.title}
 
   ## Description
 
@@ -66,15 +82,12 @@ function generateMarkdown(data) {
 
   ## License
 
-  ${data.license}
+  ${renderLicenseLink(data.license)}
 
   ## Questions
 
 If you have anymore questions please reach out to me at my email: ${data.Contact}, or visit my [Github Account](https://github.com/${data.Username})
 `;
 }
-
-//call license functions in generate markdown
-//create layour of what you want as a readme layout with template literals
 
 module.exports = generateMarkdown;
